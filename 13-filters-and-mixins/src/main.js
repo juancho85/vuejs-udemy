@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// Vue.filter('to-lowercase', {
-//
-// });
+Vue.filter('reverse', function(value) {
+  return value.split('').reverse().join('');
+});
 
 
 new Vue({
