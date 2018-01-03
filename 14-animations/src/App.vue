@@ -12,6 +12,11 @@
         <button class="btn btn-primary" @click="show = !show">Toggle alert</button>
         <br>
         <br>
+        <transition :name="alertAnimation" mode="out-in">
+          <div class="alert alert-info" v-if="show" key="info">This is some info</div>
+          <div class="alert alert-warning" v-if="!show" key="warning">This is some warning</div>
+        </transition>
+
         <transition :name="alertAnimation">
           <div class="alert alert-info" v-show="show">This is some info</div>
         </transition>
@@ -27,6 +32,8 @@
         >
           <div class="alert alert-info" v-if="show">This is some info</div>
         </transition>
+
+
       </div>
     </div>
   </div>
@@ -77,7 +84,7 @@
 
   .slide-leave-active {
     animation: slide-out 1s ease-out forwards;
-    transition: opacity 3s;
+    transition: opacity 1s;
     opacity: 0;
   }
 
