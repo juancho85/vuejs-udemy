@@ -1,3 +1,7 @@
 <template>
-    <div class="alert alert-danger">This is dangerous!</div>
+    <div class="containerr">
+      <div class="row text-center">
+
+      </div>
+    </div>
 </template>
