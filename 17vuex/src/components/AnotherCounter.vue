@@ -8,11 +8,13 @@
 <script>
     import { mapMutations } from 'vuex';
     import { mapActions } from 'vuex';
+    import * as types from '../store/types';
+
     export default {
         methods: {
           ...mapMutations({
-            inc: 'increment',
-            dec: 'decrement'
+            inc: types.DOUBLE_COUNTER,
+            dec: types.CLICK_COUNTER
           }),
           ...mapActions({
             incAction: 'asyncIncrement',
