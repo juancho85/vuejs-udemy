@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p>Counter is: {{ counter }}</p>
+    <p>Double is: {{ counter }}</p>
+    <p>Raw is: {{ rawCounter }}</p>
     <p>Number of clicks: {{ clicks }}</p>
   </div>
 
@@ -14,10 +15,11 @@
           ...mapGetters({
                        counter: 'doubleCounter',
                        clicks: 'stringCounter'
-                     })
+          }),
+          rawCounter() {
+            return this.$store.getters.doubleCounter;
+          }
         }
-      // counter() {
-      //   return this.$store.getters.doubleCounter;
-      // }
+
     }
 </script>
