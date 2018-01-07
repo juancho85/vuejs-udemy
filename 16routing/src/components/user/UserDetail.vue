@@ -22,6 +22,10 @@
           hash: '#data'
         }
       }
+    },
+    beforeRouteEnter(to, from, next) {
+      console.log('beforeRouteEnter on component');
+      next();
     }
   }
 </script>

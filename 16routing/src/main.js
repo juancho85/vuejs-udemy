@@ -25,11 +25,15 @@ const router = new VueRouter({
       y: 700
     }
   }
+});
 
+router.beforeEach((to, from, next) => {
+  console.log('global before each');
+  next();
 });
 
 new Vue({
   el: '#app',
   router,
   render: h => h(App)
-})
+});
