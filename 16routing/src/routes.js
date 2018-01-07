@@ -6,7 +6,9 @@ import Home from './components/Home.vue';
 import Header from './components/Header.vue';
 
 export const routes = [
-  { path: '', name: 'home', components: {
+  { path: '',
+    name: 'home',
+    components: {
       default: Home,
       'header-top': Header,
     }
@@ -22,6 +24,10 @@ export const routes = [
       {path: ':id', component: UserDetail},
       {path: ':id/edit', component: UserEdit, name: 'userEdit' },
     ]
+  },
+  {
+    path: '/redirect-me',
+    redirect: '/user'
   }
 
 ];
