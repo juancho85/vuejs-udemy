@@ -16,6 +16,9 @@ npm run build
 
 # install router
 npm install --save vue-router
+
+# Add support for the ES6 spread (...) operator
+npm install --save-dev babel-preset-stage-2
 ```
 ```
 
