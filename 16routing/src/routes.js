@@ -16,7 +16,7 @@ export const routes = [
   {
     path: '/user',
     components: {
-      default: Home,
+      default: User,
       'header-bottom': Header,
     },
     children: [
