@@ -1,6 +1,6 @@
 <template>
   <li class="list-group-item" @click="loadDetails">
-    Server #{{ id }}
+    Server #{{ server.id }}
   </li>
 </template>
 
@@ -8,15 +8,11 @@
     import { EventBus } from '../../event-bus';
     export default {
       props: {
-        id: '',
-        status: ''
+        server: {}
       },
       methods: {
         loadDetails() {
-          EventBus.$emit('loadServerDetail', {
-            id: this.id,
-            status: this.status
-          });
+          EventBus.$emit('loadServerDetail', this.server);
         }
       }
     }

@@ -29,7 +29,8 @@
     methods: {
       changeStatus() {
         this.currentServer.status = 'Normal';
-        EventBus.$emit('serverStatusUpdated', this.currentServer);
+        // No need to emit event, since we have a reference to the actual object
+        // EventBus.$emit('serverStatusUpdated', this.currentServer);
       }
     }
   }
