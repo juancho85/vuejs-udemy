@@ -1,9 +1,11 @@
 <template>
-  <div class="row">
-    <div class="col-xs-12">
-      <header>
-        <h1>Server Status</h1>
-      </header>
-    </div>
-  </div>
+  <ul class="nav nav-pills">
+    <router-link to="/" tag="li" active-class="active" exact><a>Home</a></router-link>
+    <router-link to="/stocks" tag="li" active-class="active"><a>Stocks</a></router-link>
+    <router-link to="/portfolio" tag="li" active-class="active"><a>Portfolio</a></router-link>
+  </ul>
 </template>
+
+<script>
+  export default { }
+</script>
