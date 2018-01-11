@@ -21,11 +21,15 @@
             <li><a href="#">Load Data</a></li>
           </ul>
         </li>
+        <li><a href="#"><strong>Funds: {{ funds }}</strong></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
 </template>
 
 <script>
-  export default { }
+  import { fundsWithCurrency } from '../mixins/funds'
+  export default {
+    mixins: [fundsWithCurrency]
+  }
 </script>
