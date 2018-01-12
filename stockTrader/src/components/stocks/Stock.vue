@@ -23,6 +23,7 @@
     },
     methods: {
       buy() {
+        //TODO: Check that quantity is really an positive integer
         let payload = {
           id: this.stock.id,
           name: this.stock.name,
@@ -30,6 +31,7 @@
           quantity: parseInt(this.quantity)
         }
         this.buyStock(payload);
+        //TODO: reset value
       },
       ...mapActions({
         buyStock: 'buy'
