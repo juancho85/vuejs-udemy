@@ -4,7 +4,7 @@
       <div class="panel-heading"><strong>{{ stock.name }}</strong> (Price: {{ stock.price }})</div>
       <div class="panel-body">
         <input type="text" v-model="quantity">
-        <button class="btn btn-success" @click="buy(stock)">Buy</button>
+        <button class="btn btn-success pull-right" @click="buy(stock)">Buy</button>
       </div>
     </div>
   </div>
