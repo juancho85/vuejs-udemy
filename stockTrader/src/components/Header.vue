@@ -13,7 +13,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">End day</a></li>
+        <li><a href="#" @click.prevent="endDay">End day</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Save / Load <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -30,6 +30,19 @@
 <script>
   import { fundsWithCurrency } from '../mixins/funds'
   export default {
-    mixins: [fundsWithCurrency]
+    mixins: [fundsWithCurrency],
+    methods: {
+      endDay() {
+        let todayStocks = this.$store.state.availableStocks;
+        console.log('stocks', todayStocks);
+        // Update prices with a +/- 10% variation maximum, never going below 0
+        for(let i = 0; i < todayStocks.length; i++){
+          todayStocks[i].price = Math.floor(Math.max(0, todayStocks[i].price * this.getRandomArbitrary(0.9, 1.1)));
+        }
+      },
+      getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+    }
   }
 </script>
