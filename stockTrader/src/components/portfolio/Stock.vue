@@ -3,7 +3,7 @@
     <div class="panel panel-info">
       <div class="panel-heading"><strong>{{ stock.name }}</strong> (Price: {{ stockPrice }}) | {{ stock.quantity }}</div>
       <div class="panel-body">
-        <input type="text" v-model="quantitySold" placeholder="Nº of stocks to sell">
+        <input type="number" v-model="quantitySold" placeholder="Nº of stocks to sell">
         <button class="btn btn-danger pull-right" @click="sell(stock)">Sell</button>
       </div>
     </div>
