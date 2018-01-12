@@ -15,10 +15,10 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" @click.prevent="endDay">End day</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Save / Load <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Save Data</a></li>
-            <li><a href="#">Load Data</a></li>
+          <a href="#" class="dropdown-toggle" @click.prevent="showMenu = !showMenu">Save / Load <b class="caret"></b></a>
+          <ul class="dropdown-menu-custom" v-show="showMenu">
+            <li><a href="#" @click.prevent="saveData">Save Data</a></li>
+            <li><a href="#" @click.prevent="loadData">Load Data</a></li>
           </ul>
         </li>
         <li><a href="#"><strong>Funds: {{ funds }}</strong></a></li>
@@ -28,9 +28,15 @@
 </template>
 
 <script>
-  import { fundsWithCurrency } from '../mixins/funds'
+  import { fundsWithCurrency } from '../mixins/funds';
+  import axios from 'axios';
   export default {
     mixins: [fundsWithCurrency],
+    data() {
+      return {
+        showMenu: false
+      }
+    },
     methods: {
       endDay() {
         let todayStocks = this.$store.state.availableStocks;
@@ -42,7 +48,47 @@
       },
       getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
+      },
+      saveData(){
+        //https://vuejs-9ef48.firebaseio.com/
+        axios.put('https://vuejs-9ef48.firebaseio.com/userstate.json', this.$store.state)
+          .then(res => alert("Data saved successfully"))
+          .catch(error => console.log(error));
+      },
+      loadData(){
+        let vm = this;
+        axios.get('https://vuejs-9ef48.firebaseio.com/userstate.json')
+          .then(res => {
+            console.log(res.data);
+            vm.$store.replaceState(res.data);
+          })
+          .catch(error => console.log(error));
       }
     }
   }
 </script>
+
+<style>
+  dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    /*display: none;*/
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  }
+</style>
