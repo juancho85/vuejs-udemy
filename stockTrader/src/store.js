@@ -32,7 +32,7 @@ const mutations = {
     }
     state.funds -= price;
     // If we have the stock in portfolio then add stocks to the existing ones
-    let existingStock = state.portfolio.filter( stock => stock.id == payload.id );
+    let existingStock = state.portfolio.filter( stock => payload.id == stock.id );
     if(existingStock.length > 0){
       existingStock[0].quantity += payload.quantity;
     } else {

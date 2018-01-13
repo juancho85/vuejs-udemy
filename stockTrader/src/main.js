@@ -3,6 +3,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import { routes } from './routes'
 import store from './store'
+import axios from 'axios'
+
+axios.defaults.baseURL = 'https://vuejs-9ef48.firebaseio.com'
 
 Vue.use(VueRouter);
 

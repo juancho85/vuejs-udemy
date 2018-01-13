@@ -51,13 +51,13 @@
       },
       saveData(){
         //https://vuejs-9ef48.firebaseio.com/
-        axios.put('https://vuejs-9ef48.firebaseio.com/userstate.json', this.$store.state)
+        axios.put('/userstate.json', this.$store.state)
           .then(res => alert("Data saved successfully"))
           .catch(error => console.log(error));
       },
       loadData(){
         let vm = this;
-        axios.get('https://vuejs-9ef48.firebaseio.com/userstate.json')
+        axios.get('/userstate.json')
           .then(res => {
             console.log(res.data);
             vm.$store.replaceState(res.data);
