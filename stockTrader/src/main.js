@@ -23,10 +23,6 @@ const router = new VueRouter({
   }
 });
 
-Vue.filter('euros', (value) => {
-  return value + ' €';
-})
-
 new Vue({
   el: '#app',
   router,
