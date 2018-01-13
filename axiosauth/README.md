@@ -28,11 +28,14 @@ Add the preset on the .babelrc config array
 # install router
 npm install --save vue-router
 
-# install vuex
+# install vuex (centralized state management)
 npm install --save vue-router
 
-# install axios
+# install axios (http requests)
 npm install --save axios
+
+# install vuelidate (form validation)
+npm install --save vuelidate
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
