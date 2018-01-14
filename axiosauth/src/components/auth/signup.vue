@@ -53,11 +53,13 @@
             <div
                     class="input"
                     v-for="(hobbyInput, index) in hobbyInputs"
+                    :class="{invalid: $v.hobbyInputs.$each[index].$error}"
                     :key="hobbyInput.id">
               <label :for="hobbyInput.id">Hobby #{{ index }}</label>
               <input
                       type="text"
                       :id="hobbyInput.id"
+                      @blur="$v.hobbyInputs.$each[index].value.$touch()"
                       v-model="hobbyInput.value">
               <button @click="onDeleteHobby(hobbyInput.id)" type="button">X</button>
             </div>
@@ -70,8 +72,8 @@
                  v-model="terms">
           <label for="terms">Accept Terms of Use</label>
         </div>
-        <div class="submit">
-          <button type="submit">Submit</button>
+        <div class="submit" >
+          <button type="submit" :disabled="$v.$invalid">Submit</button>
         </div>
       </form>
     </div>
@@ -114,7 +116,16 @@
           console.log('country:', vm.country)
           return vm.country === 'germany'
         })
-      }
+      },
+      hobbyInputs: {
+        minLen: minLength(1),
+        $each: {
+          value: {
+            required,
+            minLen: minLength(5)
+          }
+        }
+      },
     },
     methods: {
       onAddHobby () {
